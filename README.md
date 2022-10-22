@@ -40,10 +40,13 @@ Chrome -> Settings -> Search Certificates -> Security -> Manage Certificates -> 
     DNS.1 = $NAME
     EOF
 
+    //Change your PathToCA/rootCA.crt in below line. It should point to CA Certificate.
     openssl x509 -req -in $NAME.csr -CA PathToCA/rootCA.crt -CAkey PathToCA/rootCA.key -CAcreateserial \ -out $NAME.crt -days 825 -sha256 -extfile $NAME.ext
-    //Change your PathToCA/rootCA.crt in above line. It should point to CA Certificate.
+    
 
-Above command will ask for the PassKey you provided while creating your CA Certificate. This Certificate along with its PassPhrase will be verified by the CA you just recently imported in your Computer/Browser CA Authorities
+Above command will ask for the PassKey you provided while creating your CA Certificate. This Certificate along with its PassPhrase will be verified by the CA you just recently imported in your Computer/Browser CA Authorities.
+
+Now you can use **yourdomain.com.crt** and **yourdomain.com.key** as Self Signed Certificates. Remember to Import **CA Certificate** in your Browsers to verify your self signed certificates.
         
         
         
